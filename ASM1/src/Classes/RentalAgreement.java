@@ -3,31 +3,60 @@
  */
 package Classes;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class RentalAgreement {
+public class RentalAgreement implements Serializable {
     private String contractId;
     private Tenant mainTenant;
     private List<Tenant> subTenants;
     private Property rentedProperty;
-    private Host host;
+    private List<Host> hosts;
+    private RentalCycleType rentalCycle;
+    private int duration;
     private String leaseTerm;
     private String contractTerms;
     private double rentalFee;
     private String period;
-    private String status;
+    private RentalAgreementStatus status;
 
-    public RentalAgreement(String contractId, Tenant mainTenant, List<Tenant> subTenants, Property rentedProperty, Host host, String leaseTerm, String contractTerms, double rentalFee, String status, String period) {
+    public enum RentalAgreementStatus {
+        NEW, ACTIVE, COMPLETED;
+    }
+
+    public enum RentalCycleType {
+        DAILY, WEEKLY, FORTNIGHTLY, MONTHLY, YEARLY;
+    }
+
+    public RentalAgreement(String contractId, Tenant mainTenant, List<Tenant> subTenants,
+                           Property rentedProperty, List<Host> hosts, RentalCycleType rentalCycle,
+                           int duration, String contractTerms, double rentalFee, RentalAgreementStatus status) {
         this.contractId = contractId;
         this.mainTenant = mainTenant;
         this.subTenants = subTenants;
         this.rentedProperty = rentedProperty;
-        this.host = host;
-        this.leaseTerm = leaseTerm;
+        this.hosts = hosts;
+        this.rentalCycle = rentalCycle;
+        this.duration = duration;  // duration là số đơn vị (ngày, tuần, tháng, v.v.)
         this.contractTerms = contractTerms;
         this.rentalFee = rentalFee;
         this.status = status;
-        this.period = period;
+    }
+
+    public RentalCycleType getRentalCycle() {
+        return rentalCycle;
+    }
+
+    public void setRentalCycle(RentalCycleType rentalCycle) {
+        this.rentalCycle = rentalCycle;
+    }
+
+    public int getDuration() {
+        return duration;
+    }
+
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
     public String getContractId() {
@@ -62,12 +91,12 @@ public class RentalAgreement {
         this.rentedProperty = rentedProperty;
     }
 
-    public Host getHost() {
-        return host;
+    public List<Host> getHost() {
+        return hosts;
     }
 
-    public void setHost(Host host) {
-        this.host = host;
+    public void setHost(List<Host> hosts) {
+        this.hosts = hosts;
     }
 
     public String getLeaseTerm() {
@@ -94,34 +123,39 @@ public class RentalAgreement {
         this.rentalFee = rentalFee;
     }
 
-    public String getStatus() {
+    public RentalAgreementStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(RentalAgreementStatus status) {
         this.status = status;
     }
-    public String getPeriod() {
-        return period;
-    }
 
-    public void setPeriod(String period) {
-        this.period = period;
-    }
+
+
+
+
+
+
+
+//    @Override
+//    public int compareTo(RentalAgreement other) {
+//        return Double.compare(this.rentalFee, other.rentalFee);
+//    }
 
     @Override
     public String toString() {
         return "RentalAgreement{" +
                 "contractId='" + contractId + '\'' +
-                ", mainTenant=" + mainTenant +
-                ", subTenants=" + subTenants +
-                ", rentedProperty=" + rentedProperty +
-                ", host=" + host +
-                ", leaseTerm='" + leaseTerm + '\'' +
+                ", mainTenant=" + (mainTenant != null ? mainTenant.getFullName() : "No main tenant") +
+                ", subTenants=" + (subTenants != null ? subTenants.size() + " sub-tenants" : "No sub-tenants") +
+                ", rentedProperty=" + (rentedProperty != null ? rentedProperty.getAddress() : "No rented property") +
+                ", hosts=" + (hosts != null ? hosts.size() + " hosts" : "No hosts") +
+                ", leaseTerm=" + leaseTerm +
                 ", contractTerms='" + contractTerms + '\'' +
                 ", rentalFee=" + rentalFee +
-                ", status='" + status + '\'' +
-                ", period='" + period + '\'' +
+                ", status=" + status +
                 '}';
+
     }
 }

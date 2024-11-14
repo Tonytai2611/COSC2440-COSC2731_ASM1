@@ -1,3 +1,7 @@
+/**
+ * @author <Truong Phung Tan Tai - s3974929>
+ */
+
 package Classes;
 
 import java.util.Date;
@@ -51,9 +55,10 @@ public class Host extends Person{
     @Override
     public String toString() {
         return "Host{" +
-                "managedProperties=" + managedProperties +
-                ", cooperatingOwners=" + cooperatingOwners +
-                ", rentalAgreements=" + rentalAgreements +
+                super.toString() + // Gọi toString của lớp cha Person
+                ", managedProperties=" + (managedProperties != null ? managedProperties : "[]") +
+                ", cooperatingOwners=" + (cooperatingOwners != null ? cooperatingOwners : "[]") +
+                ", rentalAgreements=" + (rentalAgreements != null ? rentalAgreements : "[]") +
                 '}';
     }
 }

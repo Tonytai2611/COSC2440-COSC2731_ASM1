@@ -9,7 +9,7 @@ public class CommercialProperty extends Property {
     private int parkingSpaces;
     private double squareFootage;
 
-    public CommercialProperty(String propertyId, String address, double pricing, String status, String businessType, int parkingSpaces, double squareFootage) {
+    public CommercialProperty(String propertyId, String address, double pricing, PropertyStatus status, String businessType, int parkingSpaces, double squareFootage) {
         super(propertyId, address, pricing, status);
         this.businessType = businessType;
         this.parkingSpaces = parkingSpaces;
@@ -43,9 +43,14 @@ public class CommercialProperty extends Property {
     @Override
     public String toString() {
         return "CommercialProperty{" +
-                "businessType='" + businessType + '\'' +
+                "propertyId='" + getPropertyId() + '\'' +
+                ", address='" + getAddress() + '\'' +
+                ", pricing=" + getPricing() +
+                ", status=" + getStatus() +
+                ", businessType='" + businessType + '\'' +
                 ", parkingSpaces=" + parkingSpaces +
                 ", squareFootage=" + squareFootage +
                 '}';
     }
 }
+

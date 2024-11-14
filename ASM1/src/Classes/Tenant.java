@@ -37,8 +37,12 @@ public class Tenant extends Person {
     @Override
     public String toString() {
         return "Tenant{" +
-                "rentalAgreements=" + rentalAgreements +
-                ", paymentRecords=" + paymentRecords +
+                "fullName='" + getFullName() + '\'' +
+                ", id='" + getId() + '\'' +
+                ", dateOfBirth=" + getDateOfBirth() +
+                ", contactInfo='" + getContactInfo() + '\'' +
+                ", rentalAgreements=" + (rentalAgreements != null ? rentalAgreements.size() + " rental agreements" : "no rental agreements") +
+                ", paymentRecords=" + (paymentRecords != null ? paymentRecords.size() + " payment records" : "no payment records") +
                 '}';
     }
 }

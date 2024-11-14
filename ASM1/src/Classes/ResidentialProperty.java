@@ -9,7 +9,7 @@ public class ResidentialProperty extends Property {
     private boolean gardenAvailability;
     private boolean petFriendliness;
 
-    public ResidentialProperty(String propertyId, String address, double pricing, String status, int numBedrooms, boolean gardenAvailability, boolean petFriendliness) {
+    public ResidentialProperty(String propertyId, String address, double pricing, PropertyStatus  status, int numBedrooms, boolean gardenAvailability, boolean petFriendliness) {
         super(propertyId, address, pricing, status);
         this.numBedrooms = numBedrooms;
         this.gardenAvailability = gardenAvailability;
@@ -43,7 +43,11 @@ public class ResidentialProperty extends Property {
     @Override
     public String toString() {
         return "ResidentialProperty{" +
-                "numBedrooms=" + numBedrooms +
+                "propertyId='" + getPropertyId() + '\'' +
+                ", address='" + getAddress() + '\'' +
+                ", pricing=" + getPricing() +
+                ", status=" + getStatus() +
+                ", numBedrooms=" + numBedrooms +
                 ", gardenAvailability=" + gardenAvailability +
                 ", petFriendliness=" + petFriendliness +
                 '}';

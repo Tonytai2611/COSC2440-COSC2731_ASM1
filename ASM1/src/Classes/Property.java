@@ -5,16 +5,20 @@ package Classes;
 
 import java.util.Objects;
 
-public class Property {
+public abstract class Property {
     private String propertyId;
     private String address;
     private double pricing;
-    private String status;
+    private PropertyStatus status;
+
+    public enum PropertyStatus {
+        AVAILABLE, RENTED, UNDER_MAINTENANCE;
+    }
 
     public Property() {
     }
 
-    public Property(String propertyId, String address, double pricing, String status) {
+    public Property(String propertyId, String address, double pricing, PropertyStatus status) {
         this.propertyId = propertyId;
         this.address = address;
         this.pricing = pricing;
@@ -37,11 +41,11 @@ public class Property {
         this.address = address;
     }
 
-    public String getStatus() {
+    public PropertyStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(PropertyStatus status) {
         this.status = status;
     }
 

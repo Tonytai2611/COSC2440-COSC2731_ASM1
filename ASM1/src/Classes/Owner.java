@@ -52,6 +52,7 @@ public class Owner extends Person{
     @Override
     public String toString() {
         return "Owner{" +
+                super.toString() +
                 "ownedProperties=" + ownedProperties +
                 ", managingHosts=" + managingHosts +
                 ", rentalAgreements=" + rentalAgreements +

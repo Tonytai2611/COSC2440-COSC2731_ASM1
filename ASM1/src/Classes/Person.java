@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.Objects;
 
 
-public class Person {
+public abstract class Person {
     private String id;
     private String fullName;
     private Date dateOfBirth;
